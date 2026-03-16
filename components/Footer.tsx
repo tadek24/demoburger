@@ -38,7 +38,7 @@ export function Footer() {
 
           <div>
             <h4 className="text-lg font-bold mb-4">Zamówienia</h4>
-            <p className="text-gray-400 mb-4">Szybka dostawa w Grybowie i okolicach (Gorlice, Stróże, Nowy Sącz)</p>
+            <p className="text-gray-400 mb-4">Zamów online i odbierz punktualnie w Grybowie!</p>
             <a href="tel:+48123456789" className="text-2xl font-black text-brand-yellow hover:text-brand-red transition-colors">
               +48 123 456 789
             </a>

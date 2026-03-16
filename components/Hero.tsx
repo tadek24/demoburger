@@ -2,14 +2,15 @@
 
 import { motion } from 'framer-motion';
 import { ChevronDown } from 'lucide-react';
+import Link from 'next/link';
 
 export function Hero() {
   const scrollToNext = () => {
-    document.getElementById('bestsellers')?.scrollIntoView({ behavior: 'smooth' });
+    document.getElementById('dlaczego-my')?.scrollIntoView({ behavior: 'smooth' });
   };
 
   return (
-    <section className="relative min-h-[85vh] flex flex-col items-center justify-center overflow-hidden bg-slate-50 dark:bg-slate-900">
+    <section className="relative min-h-[90vh] flex flex-col items-center justify-center overflow-hidden bg-slate-50 dark:bg-slate-900 pt-20">
       {/* Background soft shapes */}
       <div className="absolute inset-0 z-0 flex justify-center items-center pointer-events-none opacity-50 dark:opacity-20">
         <div className="absolute top-4 left-4 text-sm font-bold text-slate-400 dark:text-slate-500 z-50 bg-white/50 dark:bg-black/50 px-3 py-1 rounded-full backdrop-blur-md">
@@ -19,36 +20,53 @@ export function Hero() {
         <div className="w-[600px] h-[600px] bg-brand-red/10 rounded-full blur-[120px] absolute bottom-0 -right-40" />
       </div>
 
-      <div className="z-10 text-center px-4 max-w-5xl mt-16">
+      <div className="z-10 text-center px-4 max-w-5xl mt-8">
         <motion.h1 
           initial={{ opacity: 0, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
-          className="text-6xl md:text-8xl lg:text-9xl font-black mb-6 tracking-tighter text-brand-dark dark:text-white leading-[0.9]"
+          className="text-5xl md:text-7xl lg:text-8xl font-black mb-4 tracking-tighter text-brand-dark dark:text-white leading-[1.1]"
         >
-          SMAKUJ <span className="text-brand-red block md:inline">ŻYCIE</span>
+          Fire Burger – Najlepsze Burgery i Pizza w Regionie
         </motion.h1>
+        
+        <motion.h2 
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.1 }}
+          className="text-2xl md:text-3xl font-bold mb-8 text-brand-red uppercase tracking-widest"
+        >
+          Grybów | Gorlice | Nowy Sącz | Stróże
+        </motion.h2>
 
         <motion.p
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.2 }}
-          className="text-lg md:text-2xl text-slate-600 dark:text-slate-300 mb-12 font-medium max-w-2xl mx-auto"
+          className="text-lg md:text-2xl text-slate-600 dark:text-slate-300 mb-12 font-medium max-w-3xl mx-auto"
         >
-          Prawdziwe rzemieślnicze burgery ze 100% wołowiny i chrupiąca, gorąca pizza prosto z pieca.
+          Prawdziwa rzemieślnicza robota i bezkompromisowy smak. Zamów wygodnie online i odbierz osobiście bez stania w kolejce.
         </motion.p>
 
-        <motion.button
+        <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.4 }}
-          whileHover={{ scale: 1.05 }}
-          whileTap={{ scale: 0.95 }}
-          onClick={scrollToNext}
-          className="px-10 py-5 bg-brand-red text-white text-xl font-black rounded-full shadow-xl hover:shadow-2xl uppercase tracking-wider transition-all hover:bg-red-600"
+          className="flex flex-col sm:flex-row items-center justify-center gap-4"
         >
-          Zamów online
-        </motion.button>
+          <Link 
+            href="/menu"
+            className="w-full sm:w-auto px-10 py-5 bg-brand-red text-white text-xl font-black rounded-full shadow-xl hover:shadow-2xl uppercase tracking-wider transition-all hover:bg-red-600"
+          >
+            Zamów na wynos
+          </Link>
+          <button
+            onClick={scrollToNext}
+            className="w-full sm:w-auto px-10 py-5 bg-white dark:bg-slate-800 text-brand-dark dark:text-white text-xl font-black rounded-full shadow-md hover:shadow-lg uppercase tracking-wider transition-all border border-slate-200 dark:border-white/10"
+          >
+            Zobacz Menu
+          </button>
+        </motion.div>
       </div>
 
       <motion.div 

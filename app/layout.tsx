@@ -7,7 +7,7 @@ import { Footer } from "@/components/Footer";
 
 export const metadata: Metadata = {
   title: "Fire Burger | Premium Fast-Food",
-  description: "Prawdziwe rzemieślnicze burgery i chrupiąca pizza. Zamów online z dostawą.",
+  description: "Prawdziwe rzemieślnicze burgery i chrupiąca pizza. Zamów online na wynos z obierem osobistym.",
 };
 
 export default function RootLayout({

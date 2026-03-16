@@ -22,7 +22,7 @@ export default function Contact() {
             transition={{ delay: 0.2 }}
             className="text-slate-600 dark:text-slate-400 text-lg md:text-xl max-w-2xl mx-auto font-medium"
           >
-            Masz pytanie, chcesz zamówić na konkretną godzinę, lub przygotowujesz imprezę w okolicach Grybowa? Skontaktuj się!
+            Masz pytanie, chcesz zamówić na konkretną godzinę odbiór w lokalu, lub przygotowujesz imprezę w Grybowie? Skontaktuj się!
           </motion.p>
         </div>
 
@@ -71,10 +71,10 @@ export default function Contact() {
             <div className="bg-brand-yellow rounded-3xl p-8 md:p-10 shadow-sm text-brand-dark">
               <div className="flex items-center gap-4 mb-4">
                 <Truck className="w-8 h-8" />
-                <h2 className="text-3xl font-black">Dostawa 50 km!</h2>
+                <h2 className="text-3xl font-black">Odbiór osobisty na czas!</h2>
               </div>
               <p className="font-medium text-lg leading-relaxed">
-                Zamów przez naszą stronę lub zadzwoń. Dowozimy ciepłe jedzenie w promieniu do 50 km z Grybowa. Obejmujemy między innymi <strong className="font-black">Gorlice, Stróże i Nowy Sącz</strong>.
+                Zamów wygodnie na wynos przez naszą stronę lub zadzwoń. Złóż zamówienie z domu czy pracy w <strong className="font-black">Gorlicach, Stróżach czy Nowym Sączu</strong>, wpadnij do Grybowa i zgarnij gorące jedzenie bez czekania w kolejce!
               </p>
             </div>
           </div>
