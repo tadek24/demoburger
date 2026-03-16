@@ -4,12 +4,13 @@
 
 :root {
   --background: #fdfdfd;
-  --foreground: #050505;
+  --foreground: #0f172a; /* slate-900 */
 }
 
+/* Optional dark mode fallback - although default is now light */
 .dark {
-  --background: #050505;
-  --foreground: #ededed;
+  --background: #0f172a;
+  --foreground: #f8fafc;
 }
 
 body {
@@ -19,31 +20,37 @@ body {
 }
 
 .glass {
-  background: rgba(255, 255, 255, 0.03);
+  background: rgba(255, 255, 255, 0.8);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.dark .glass {
+  background: rgba(15, 23, 42, 0.8);
   border: 1px solid rgba(255, 255, 255, 0.05);
 }
 
-.neon-text-green {
-  text-shadow: 0 0 10px rgba(0, 255, 102, 0.5), 0 0 20px rgba(0, 255, 102, 0.3);
-}
-
-.neon-box-green {
-  box-shadow: 0 0 15px rgba(0, 255, 102, 0.2), inset 0 0 10px rgba(0, 255, 102, 0.1);
-}
-
-/* Scrollbar styles to look tech-heavy */
+/* Scrollbar styles */
 ::-webkit-scrollbar {
   width: 8px;
 }
 ::-webkit-scrollbar-track {
-  background: #000;
+  background: #f1f5f9;
+}
+.dark ::-webkit-scrollbar-track {
+  background: #0f172a;
 }
 ::-webkit-scrollbar-thumb {
-  background: #333;
+  background: #cbd5e1;
   border-radius: 4px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #00ff66;
+  background: #ef4444; /* red-500 */
+}
+.dark ::-webkit-scrollbar-thumb {
+  background: #334155;
+}
+.dark ::-webkit-scrollbar-thumb:hover {
+  background: #ef4444;
 }

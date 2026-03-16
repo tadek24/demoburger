@@ -11,12 +11,14 @@ const config: Config = {
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",
-        neon: {
-          green: "#00ff66",
-          blue: "#00f3ff",
-          pink: "#ff0099"
+        brand: {
+          red: "#ef4444",
+          yellow: "#facc15",
+          green: "#22c55e",
+          dark: "#0f172a"
         },
-        card: "rgba(255, 255, 255, 0.05)"
+        card: "rgba(255, 255, 255, 0.8)",
+        "card-dark": "rgba(15, 23, 42, 0.8)"
       },
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
