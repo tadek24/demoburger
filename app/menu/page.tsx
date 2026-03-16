@@ -102,11 +102,11 @@ export default function Menu() {
   };
 
   return (
-    <main className="min-h-screen relative pb-24 pt-12 bg-slate-50 dark:bg-brand-dark">
+    <main className="min-h-screen relative pb-24 pt-12 bg-slate-50">
       
       <div className="text-center mb-8 px-4 pt-8">
-        <h1 className="text-5xl md:text-7xl font-black mb-4 tracking-tight uppercase text-brand-dark dark:text-white">Pełne <span className="text-brand-red">Menu</span></h1>
-        <p className="text-slate-600 dark:text-slate-400 text-lg max-w-2xl mx-auto font-medium">
+        <h1 className="text-5xl md:text-7xl font-black mb-4 tracking-tight uppercase text-brand-dark">Pełne <span className="text-brand-red">Menu</span></h1>
+        <p className="text-slate-600 text-lg max-w-2xl mx-auto font-medium">
           Wybierz swoje ulubione jedzenie, dodaj do zamówienia i ciesz się smakiem premium.
         </p>
       </div>
@@ -114,8 +114,8 @@ export default function Menu() {
       <div className="max-w-7xl mx-auto px-4 lg:px-8 py-8 flex flex-col lg:flex-row gap-12 items-start">
         
         {/* Sticky Sidebar Navigation */}
-        <aside className="w-full lg:w-64 flex-shrink-0 sticky top-[80px] z-40 bg-slate-50/90 dark:bg-brand-dark/90 backdrop-blur pb-4 lg:py-8 lg:min-h-[calc(100vh-100px)] border-b lg:border-none border-slate-200 dark:border-white/10">
-          <h3 className="font-bold text-slate-800 dark:text-slate-200 uppercase tracking-wider mb-4 hidden lg:block">Kategorie</h3>
+        <aside className="w-full lg:w-64 flex-shrink-0 sticky top-[80px] z-40 bg-slate-50/90 backdrop-blur pb-4 lg:py-8 lg:min-h-[calc(100vh-100px)] border-b lg:border-none border-slate-200">
+          <h3 className="font-bold text-slate-800 uppercase tracking-wider mb-4 hidden lg:block">Kategorie</h3>
           <nav className="flex lg:flex-col gap-2 overflow-x-auto lg:overflow-visible pb-2 lg:pb-0 hide-scrollbar">
             {CATEGORIES.map((cat) => {
               const id = cat.title.toLowerCase().replace(/\s+/g, '-');
@@ -124,7 +124,7 @@ export default function Menu() {
                   key={cat.title} 
                   href={`#${id}`}
                   onClick={(e) => scrollToMenuCategory(id, e)}
-                  className="whitespace-nowrap px-5 py-3 rounded-full lg:rounded-xl text-sm font-bold bg-white dark:bg-slate-800/50 hover:bg-brand-red hover:text-white transition-all shadow-sm border border-slate-100 dark:border-white/5 text-slate-700 dark:text-slate-300"
+                  className="whitespace-nowrap px-5 py-3 rounded-full lg:rounded-xl text-sm font-bold bg-white hover:bg-brand-red hover:text-white transition-all shadow-sm border border-slate-100 text-slate-700"
                 >
                   {cat.title}
                 </a>
@@ -140,8 +140,8 @@ export default function Menu() {
             return (
               <section key={category.title} id={id} className="scroll-mt-36">
                 <div className="flex items-center gap-4 mb-8">
-                  <h2 className="text-3xl font-black uppercase tracking-wider text-brand-dark dark:text-white">{category.title}</h2>
-                  <div className="h-[2px] flex-grow bg-slate-200 dark:bg-white/10 rounded-full"></div>
+                  <h2 className="text-3xl font-black uppercase tracking-wider text-brand-dark">{category.title}</h2>
+                  <div className="h-[2px] flex-grow bg-slate-200 rounded-full"></div>
                 </div>
                 <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
                   {category.items.map((item) => (
@@ -164,12 +164,12 @@ export default function Menu() {
         whileHover={{ scale: 1.05 }}
         whileTap={{ scale: 0.95 }}
         onClick={openCart}
-        className="fixed bottom-8 right-8 z-50 p-5 rounded-full bg-brand-yellow text-brand-dark shadow-[0_10px_40px_rgba(250,204,21,0.5)] flex items-center justify-center group border-2 border-white dark:border-slate-800"
+        className="fixed bottom-8 right-8 z-50 p-5 rounded-full bg-brand-yellow text-brand-dark shadow-[0_10px_40px_rgba(250,204,21,0.5)] flex items-center justify-center group border-2 border-white"
       >
         <div className="relative">
           <ShoppingBag size={32} />
           {totalItems > 0 && (
-            <span className="absolute -top-3 -right-3 bg-brand-red text-white text-sm font-black w-7 h-7 rounded-full flex items-center justify-center shadow-lg border-2 border-white dark:border-brand-dark">
+            <span className="absolute -top-3 -right-3 bg-brand-red text-white text-sm font-black w-7 h-7 rounded-full flex items-center justify-center shadow-lg border-2 border-white">
               {totalItems}
             </span>
           )}

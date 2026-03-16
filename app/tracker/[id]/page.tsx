@@ -74,9 +74,7 @@ export default function TrackerPage({ params }: { params: { id: string } }) {
       <motion.div 
         initial={{ scale: 0.8, opacity: 0 }}
         animate={{ scale: isActive ? 1 : 0.8, opacity: isActive ? 1 : 0.5 }}
-        className={`relative z-10 w-16 h-16 rounded-full flex items-center justify-center border-2 transition-colors ${
-          isActive ? 'bg-black border-neon-green text-neon-green neon-box-green' : 'bg-white/5 border-white/10 text-gray-500'
-        }`}
+        className={`relative z-10 w-16 h-16 rounded-full flex items-center justify-center border-2 transition-colors ${ isActive ? 'bg-black border-neon-green text-neon-green neon-box-green' : 'bg-white/5 border-white/10 text-gray-500' }`}
       >
         <Icon size={28} />
         {isCurrent && (

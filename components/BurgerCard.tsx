@@ -35,9 +35,9 @@ export function BurgerCard({ id, name, description, price, image, ingredients }:
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       whileHover={{ y: -5 }}
-      className="bg-white dark:bg-card-dark rounded-3xl overflow-hidden flex flex-col group shadow-sm hover:shadow-xl transition-all duration-300 border border-slate-100 dark:border-white/5"
+      className="bg-white rounded-3xl overflow-hidden flex flex-col group shadow-sm hover:shadow-xl transition-all duration-300 border border-slate-100"
     >
-      <div className="relative h-48 sm:h-64 w-full bg-slate-50 dark:bg-slate-800/50 overflow-hidden flex flex-col items-center justify-center p-6 rounded-t-3xl">
+      <div className="relative h-48 sm:h-64 w-full bg-slate-50 overflow-hidden flex flex-col items-center justify-center p-6 rounded-t-3xl">
         <motion.div 
           whileHover={{ scale: 1.1, rotate: 2 }}
           transition={{ duration: 0.4 }}
@@ -54,7 +54,7 @@ export function BurgerCard({ id, name, description, price, image, ingredients }:
           <span className="text-xl font-black text-brand-green whitespace-nowrap">{price.toFixed(2)} zł</span>
         </div>
         
-        <p className="text-slate-500 dark:text-slate-400 text-sm mb-6 flex-grow leading-relaxed">{description}</p>
+        <p className="text-slate-500 text-sm mb-6 flex-grow leading-relaxed">{description}</p>
         
         <motion.button
           whileHover={{ scale: 1.02 }}

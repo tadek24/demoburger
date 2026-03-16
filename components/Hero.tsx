@@ -10,10 +10,10 @@ export function Hero() {
   };
 
   return (
-    <section className="relative min-h-[90vh] flex flex-col items-center justify-center overflow-hidden bg-slate-50 dark:bg-slate-900 pt-20">
+    <section className="relative min-h-[90vh] flex flex-col items-center justify-center overflow-hidden bg-slate-50 pt-20">
       {/* Background soft shapes */}
-      <div className="absolute inset-0 z-0 flex justify-center items-center pointer-events-none opacity-50 dark:opacity-20">
-        <div className="absolute top-4 left-4 text-sm font-bold text-slate-400 dark:text-slate-500 z-50 bg-white/50 dark:bg-black/50 px-3 py-1 rounded-full backdrop-blur-md">
+      <div className="absolute inset-0 z-0 flex justify-center items-center pointer-events-none opacity-50">
+        <div className="absolute top-4 left-4 text-sm font-bold text-slate-400 z-50 bg-white/50 px-3 py-1 rounded-full backdrop-blur-md">
           (Tło docelowe: 1920x1080px)
         </div>
         <div className="w-[500px] h-[500px] bg-brand-yellow/20 rounded-full blur-[100px] absolute -top-20 -left-20" />
@@ -25,7 +25,7 @@ export function Hero() {
           initial={{ opacity: 0, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
-          className="text-5xl md:text-7xl lg:text-8xl font-black mb-4 tracking-tighter text-brand-dark dark:text-white leading-[1.1]"
+          className="text-5xl md:text-7xl lg:text-8xl font-black mb-4 tracking-tighter text-brand-dark leading-[1.1]"
         >
           Fire Burger – Najlepsze Burgery i Pizza w Regionie
         </motion.h1>
@@ -43,7 +43,7 @@ export function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.2 }}
-          className="text-lg md:text-2xl text-slate-600 dark:text-slate-300 mb-12 font-medium max-w-3xl mx-auto"
+          className="text-lg md:text-2xl text-slate-600 mb-12 font-medium max-w-3xl mx-auto"
         >
           Prawdziwa rzemieślnicza robota i bezkompromisowy smak. Zamów wygodnie online i odbierz osobiście bez stania w kolejce.
         </motion.p>
@@ -62,7 +62,7 @@ export function Hero() {
           </Link>
           <button
             onClick={scrollToNext}
-            className="w-full sm:w-auto px-10 py-5 bg-white dark:bg-slate-800 text-brand-dark dark:text-white text-xl font-black rounded-full shadow-md hover:shadow-lg uppercase tracking-wider transition-all border border-slate-200 dark:border-white/10"
+            className="w-full sm:w-auto px-10 py-5 bg-white text-brand-dark text-xl font-black rounded-full shadow-md hover:shadow-lg uppercase tracking-wider transition-all border border-slate-200"
           >
             Zobacz Menu
           </button>

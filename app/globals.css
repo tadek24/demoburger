@@ -7,11 +7,7 @@
   --foreground: #0f172a; /* slate-900 */
 }
 
-/* Optional dark mode fallback - although default is now light */
-.dark {
-  --background: #0f172a;
-  --foreground: #f8fafc;
-}
+
 
 body {
   color: var(--foreground);
@@ -26,10 +22,7 @@ body {
   border: 1px solid rgba(0, 0, 0, 0.05);
 }
 
-.dark .glass {
-  background: rgba(15, 23, 42, 0.8);
-  border: 1px solid rgba(255, 255, 255, 0.05);
-}
+
 
 /* Scrollbar styles */
 ::-webkit-scrollbar {
@@ -38,9 +31,7 @@ body {
 ::-webkit-scrollbar-track {
   background: #f1f5f9;
 }
-.dark ::-webkit-scrollbar-track {
-  background: #0f172a;
-}
+
 ::-webkit-scrollbar-thumb {
   background: #cbd5e1;
   border-radius: 4px;
@@ -48,9 +39,4 @@ body {
 ::-webkit-scrollbar-thumb:hover {
   background: #ef4444; /* red-500 */
 }
-.dark ::-webkit-scrollbar-thumb {
-  background: #334155;
-}
-.dark ::-webkit-scrollbar-thumb:hover {
-  background: #ef4444;
-}
+
