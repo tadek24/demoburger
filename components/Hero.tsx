@@ -12,6 +12,9 @@ export function Hero() {
     <section className="relative min-h-[85vh] flex flex-col items-center justify-center overflow-hidden bg-slate-50 dark:bg-slate-900">
       {/* Background soft shapes */}
       <div className="absolute inset-0 z-0 flex justify-center items-center pointer-events-none opacity-50 dark:opacity-20">
+        <div className="absolute top-4 left-4 text-sm font-bold text-slate-400 dark:text-slate-500 z-50 bg-white/50 dark:bg-black/50 px-3 py-1 rounded-full backdrop-blur-md">
+          (Tło docelowe: 1920x1080px)
+        </div>
         <div className="w-[500px] h-[500px] bg-brand-yellow/20 rounded-full blur-[100px] absolute -top-20 -left-20" />
         <div className="w-[600px] h-[600px] bg-brand-red/10 rounded-full blur-[120px] absolute bottom-0 -right-40" />
       </div>

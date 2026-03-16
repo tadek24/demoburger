@@ -32,7 +32,7 @@ export default function AboutUs() {
               Wszystko zaczęło się od prostego marzenia: stworzyć miejsce w <strong className="text-brand-red">Grybowie</strong>, gdzie klasyczny fast-food zostaje wyniesiony na poziom premium. Chcieliśmy udowodnić, że burger może być daniem restauracyjnym, a szybka pizza zachować autentyczny, rzemieślniczy smak.
             </p>
             <p className="text-slate-600 dark:text-slate-400 leading-relaxed font-medium">
-              Zrezygnowaliśmy z półproduktów i mrożonek. Nasze bułki wypiekane są codziennie rano, wołowina to w 100% starannie selekcjonowane mięso z lokalnych ubojni, a sosy przygotowujemy na miejscu. Tak powstał <strong className="text-brand-dark dark:text-white font-bold">Max Burger</strong>.
+              Zrezygnowaliśmy z półproduktów i mrożonek. Nasze bułki wypiekane są codziennie rano, wołowina to w 100% starannie selekcjonowane mięso z lokalnych ubojni, a sosy przygotowujemy na miejscu. Tak powstał <strong className="text-brand-dark dark:text-white font-bold">Fire Burger</strong>.
             </p>
           </section>
 
@@ -43,8 +43,9 @@ export default function AboutUs() {
                 Aby zapewnić wam najlepszy smak, współpracujemy wyłącznie ze sprawdzonymi, regionalnymi gospodarstwami z okolic Nowego Sącza. Świeże warzywa, najwyższej jakości wołowina i ręcznie robione sery to fundament naszego menu.
               </p>
             </div>
-            <div className="bg-slate-200 dark:bg-slate-800 rounded-3xl overflow-hidden min-h-[300px] flex items-center justify-center border border-slate-100 dark:border-white/5 group relative">
-              <span className="text-7xl group-hover:scale-110 transition-transform duration-300 relative z-10">👨‍🍳 🍅 🥩</span>
+            <div className="bg-slate-200 dark:bg-slate-800 rounded-3xl overflow-hidden min-h-[300px] flex items-center justify-center border border-slate-100 dark:border-white/5 group relative flex-col">
+              <span className="text-7xl group-hover:scale-110 transition-transform duration-300 relative z-10 mb-2">👨‍🍳 🍅 🥩</span>
+              <span className="text-sm font-bold text-slate-400 z-10">(Zdjęcie: 800x600px)</span>
               <div className="absolute inset-0 bg-brand-yellow/10" />
             </div>
           </section>

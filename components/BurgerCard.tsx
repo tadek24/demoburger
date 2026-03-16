@@ -37,14 +37,15 @@ export function BurgerCard({ id, name, description, price, image, ingredients }:
       whileHover={{ y: -5 }}
       className="bg-white dark:bg-card-dark rounded-3xl overflow-hidden flex flex-col group shadow-sm hover:shadow-xl transition-all duration-300 border border-slate-100 dark:border-white/5"
     >
-      <div className="relative h-48 sm:h-64 w-full bg-slate-50 dark:bg-slate-800/50 overflow-hidden flex items-center justify-center p-6 rounded-t-3xl">
+      <div className="relative h-48 sm:h-64 w-full bg-slate-50 dark:bg-slate-800/50 overflow-hidden flex flex-col items-center justify-center p-6 rounded-t-3xl">
         <motion.div 
           whileHover={{ scale: 1.1, rotate: 2 }}
           transition={{ duration: 0.4 }}
-          className="relative z-10 w-full h-full flex items-center justify-center text-7xl text-center filter drop-shadow-lg"
+          className="relative z-10 w-full flex items-center justify-center text-7xl text-center filter drop-shadow-lg mb-2"
         >
           {image.startsWith('/') ? '🍔' : image}
         </motion.div>
+        <span className="text-xs font-bold text-slate-400 z-10">(Karta: 600x400px)</span>
       </div>
 
       <div className="p-6 flex flex-col flex-grow relative z-20">

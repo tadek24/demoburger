@@ -32,7 +32,7 @@ export function Navigation() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-20">
           <Link href="/" className="flex items-center">
-            <span className="text-2xl font-black tracking-tighter uppercase text-brand-red">Max Burger</span>
+            <span className="text-2xl font-black tracking-tighter uppercase text-brand-red">Fire Burger</span>
           </Link>
           
           <div className="hidden lg:flex items-center space-x-8">

@@ -17,7 +17,7 @@ export function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12 mb-12">
           
           <div>
-            <h3 className="text-2xl font-black tracking-tighter uppercase text-brand-red mb-4">Max Burger</h3>
+            <h3 className="text-2xl font-black tracking-tighter uppercase text-brand-red mb-4">Fire Burger</h3>
             <p className="text-gray-400 max-w-sm mb-6">
               Prawdziwe rzemieślnicze burgery i chrupiąca pizza. Kładziemy nacisk na jakość, smak i świeżość wszystkich składników.
             </p>
@@ -38,8 +38,7 @@ export function Footer() {
 
           <div>
             <h4 className="text-lg font-bold mb-4">Zamówienia</h4>
-            <p className="text-gray-400 mb-2">Darmowa dostawa do 50km!</p>
-            <p className="text-gray-400 mb-4">Grybów, Gorlice, Stróże, Nowy Sącz</p>
+            <p className="text-gray-400 mb-4">Szybka dostawa w Grybowie i okolicach (Gorlice, Stróże, Nowy Sącz)</p>
             <a href="tel:+48123456789" className="text-2xl font-black text-brand-yellow hover:text-brand-red transition-colors">
               +48 123 456 789
             </a>
@@ -48,7 +47,7 @@ export function Footer() {
         </div>
 
         <div className="border-t border-white/10 pt-8 flex flex-col md:flex-row items-center justify-between text-sm text-gray-500">
-          <p>&copy; {currentYear} Max Burger. Wszelkie prawa zastrzeżone.</p>
+          <p>&copy; {currentYear} Fire Burger. Wszelkie prawa zastrzeżone.</p>
           <div className="mt-4 md:mt-0 space-x-4">
             <Link href="/regulamin" className="hover:text-white transition-colors">Regulamin</Link>
             <Link href="/polityka-prywatnosci" className="hover:text-white transition-colors">Polityka Prywatności</Link>
