@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { supabase, Order, OrderStatus } from '@/lib/supabase';
 import { CheckCircle2, ChevronRight, Package, RefreshCw } from 'lucide-react';
 import { toast } from 'sonner';
+import { AdminTimer } from '@/components/AdminTimer';
 
 const STATUS_FLOW: OrderStatus[] = ['Otrzymane', 'W przygotowaniu', 'Gotowe do odbioru', 'Wydane'];
 
@@ -102,8 +103,11 @@ export default function AdminPage() {
                     <p className="text-sm text-gray-400 font-mono">ID: {order.id.slice(0, 8)}...</p>
                     <p className="text-xs text-gray-500 mt-1 line-clamp-1">{new Date(order.created_at).toLocaleTimeString()}</p>
                   </div>
-                  <div className={`text-xs px-3 py-1 rounded-full border ${getStatusColor(order.status)} font-bold`}>
-                    {order.status}
+                  <div className="flex flex-col items-end gap-2 text-right">
+                    <div className={`text-xs px-3 py-1 rounded-full border ${getStatusColor(order.status)} font-bold whitespace-nowrap`}>
+                      {order.status}
+                    </div>
+                    <AdminTimer createdAt={order.created_at} />
                   </div>
                 </div>
 

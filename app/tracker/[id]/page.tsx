@@ -5,6 +5,7 @@ import { motion } from 'framer-motion';
 import { CheckCircle2, Clock, ChefHat, Bike, PackageCheck, Copy } from 'lucide-react';
 import { supabase, Order, OrderStatus } from '@/lib/supabase';
 import { toast } from 'sonner';
+import { TrackerTimer } from '@/components/TrackerTimer';
 
 const STATUS_FLOW: OrderStatus[] = ['Otrzymane', 'W przygotowaniu', 'Gotowe do odbioru', 'Wydane'];
 
@@ -118,6 +119,14 @@ export default function TrackerPage({ params }: { params: { id: string } }) {
               <p className="text-sm text-gray-500">Klient</p>
               <p className="font-bold text-neon-blue">{order.customer_name}</p>
             </div>
+          </div>
+
+          {/* Countdown Timer */}
+          <div className="mb-12">
+            <TrackerTimer 
+              createdAt={order.created_at} 
+              isFinished={['Gotowe do odbioru', 'Wydane'].includes(order.status)} 
+            />
           </div>
 
           <div className="relative py-10">
