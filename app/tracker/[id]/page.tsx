@@ -3,10 +3,10 @@
 import { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import { CheckCircle2, Clock, ChefHat, Bike, PackageCheck, Copy } from 'lucide-react';
-import { mockSupabase, Order, OrderStatus } from '@/lib/supabase';
+import { supabase, Order, OrderStatus } from '@/lib/supabase';
 import { toast } from 'sonner';
 
-const STATUS_FLOW: OrderStatus[] = ['Received', 'Preparing', 'On the way', 'Delivered'];
+const STATUS_FLOW: OrderStatus[] = ['Otrzymane', 'W przygotowaniu', 'Gotowe do odbioru', 'Wydane'];
 
 export default function TrackerPage({ params }: { params: { id: string } }) {
   const [order, setOrder] = useState<Order | null>(null);
@@ -14,16 +14,20 @@ export default function TrackerPage({ params }: { params: { id: string } }) {
 
   useEffect(() => {
     const fetchOrder = async () => {
-      const { data } = await mockSupabase.from('orders').select();
-      const found = data?.find(o => o.id === params.id);
-      if (found) setOrder(found as Order);
+      const { data, error } = await supabase
+        .from('orders')
+        .select('*')
+        .eq('id', params.id)
+        .single();
+        
+      if (data) setOrder(data as Order);
       setLoading(false);
     };
 
     fetchOrder();
 
     // Subscribe to changes for this specific order
-    const channel = mockSupabase.channel('orders').on(
+    const channel = supabase.channel(`order-${params.id}`).on(
       'postgres_changes',
       { event: 'UPDATE', schema: 'public', table: 'orders', filter: `id=eq.${params.id}` },
       (payload) => {
@@ -33,7 +37,7 @@ export default function TrackerPage({ params }: { params: { id: string } }) {
     ).subscribe();
 
     return () => {
-      channel.unsubscribe();
+      supabase.removeChannel(channel);
     };
   }, [params.id]);
 
@@ -66,9 +70,9 @@ export default function TrackerPage({ params }: { params: { id: string } }) {
     const isCurrent = index === currentStatusIndex;
     
     let Icon = Clock;
-    if (status === 'Preparing') Icon = ChefHat;
-    if (status === 'On the way') Icon = Bike;
-    if (status === 'Delivered') Icon = PackageCheck;
+    if (status === 'W przygotowaniu') Icon = ChefHat;
+    if (status === 'Gotowe do odbioru') Icon = Bike;
+    if (status === 'Wydane') Icon = PackageCheck;
 
     return (
       <motion.div 
@@ -112,7 +116,7 @@ export default function TrackerPage({ params }: { params: { id: string } }) {
             </div>
             <div className="text-left md:text-right mt-4 md:mt-0">
               <p className="text-sm text-gray-500">Klient</p>
-              <p className="font-bold text-neon-blue">{order.customerDetails.name}</p>
+              <p className="font-bold text-neon-blue">{order.customer_name}</p>
             </div>
           </div>
 

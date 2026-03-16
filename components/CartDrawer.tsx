@@ -4,7 +4,7 @@ import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, Trash2, Plus, Minus, ShoppingBag, ArrowRight } from 'lucide-react';
 import { useCartStore } from '@/store/cart';
-import { mockSupabase } from '@/lib/supabase';
+import { supabase } from '@/lib/supabase';
 import { useRouter } from 'next/navigation';
 import { toast } from 'sonner';
 
@@ -14,8 +14,7 @@ export function CartDrawer() {
   const router = useRouter();
 
   const [formData, setFormData] = useState({
-    name: '',
-    address: ''
+    name: ''
   });
 
   const handleCheckout = async (e: React.FormEvent) => {
@@ -25,13 +24,16 @@ export function CartDrawer() {
     setIsSubmitting(true);
     
     try {
-      const { data, error } = await mockSupabase.from('orders').insert([{
+      const { data, error } = await supabase.from('orders').insert([{
+        customer_name: formData.name,
         items,
-        total: totalPrice(),
-        customerDetails: formData
-      }]);
+        total_price: totalPrice()
+      }]).select();
       
-      if (error || !data) throw new Error('Błąd przy zamówieniu');
+      if (error || !data || data.length === 0) {
+        console.error(error);
+        throw new Error('Błąd przy zamówieniu');
+      }
       
       const orderId = data[0].id;
       
@@ -132,18 +134,10 @@ export function CartDrawer() {
                 <form onSubmit={handleCheckout} className="space-y-4">
                   <input 
                     type="text" 
-                    placeholder="Imię i nazwisko" 
+                    placeholder="Imię (np. Jan K.)" 
                     required
                     value={formData.name}
                     onChange={e => setFormData({...formData, name: e.target.value})}
-                    className="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 text-white placeholder:text-gray-600 focus:outline-none focus:border-neon-pink focus:ring-1 focus:ring-neon-pink transition-all"
-                  />
-                  <input 
-                    type="text" 
-                    placeholder="Adres dostawy" 
-                    required
-                    value={formData.address}
-                    onChange={e => setFormData({...formData, address: e.target.value})}
                     className="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 text-white placeholder:text-gray-600 focus:outline-none focus:border-neon-pink focus:ring-1 focus:ring-neon-pink transition-all"
                   />
                   

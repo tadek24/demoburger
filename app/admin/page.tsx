@@ -2,29 +2,42 @@
 
 import { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { mockSupabase, getActiveOrders, Order, OrderStatus } from '@/lib/supabase';
+import { supabase, Order, OrderStatus } from '@/lib/supabase';
 import { CheckCircle2, ChevronRight, Package, RefreshCw } from 'lucide-react';
 import { toast } from 'sonner';
 
-const STATUS_FLOW: OrderStatus[] = ['Received', 'Preparing', 'On the way', 'Delivered'];
+const STATUS_FLOW: OrderStatus[] = ['Otrzymane', 'W przygotowaniu', 'Gotowe do odbioru', 'Wydane'];
 
 export default function AdminPage() {
   const [orders, setOrders] = useState<Order[]>([]);
 
-  const fetchOrders = () => {
-    // We use the helper directly to avoid simulated delay on Admin panel for snappy feel
-    const active = getActiveOrders().filter(o => o.status !== 'Delivered');
-    setOrders(active);
+  const fetchOrders = async () => {
+    const { data, error } = await supabase
+      .from('orders')
+      .select('*')
+      .neq('status', 'Wydane')
+      .order('created_at', { ascending: false });
+      
+    if (data) setOrders(data as Order[]);
+    if (error) console.error(error);
   };
 
   useEffect(() => {
     fetchOrders();
 
-    // In a real app we'd subscribe to all orders, here we just poll every 3s for demo simplicity
-    // But since mock supports subscription:
-    const interval = setInterval(fetchOrders, 2000);
+    const channel = supabase.channel('admin-orders')
+      .on('postgres_changes', { event: 'INSERT', schema: 'public', table: 'orders' }, (payload) => {
+        toast.success(`Nowe zamówienie od: ${payload.new.customer_name}!`, { icon: '🚨' });
+        fetchOrders();
+      })
+      .on('postgres_changes', { event: 'UPDATE', schema: 'public', table: 'orders' }, () => {
+        fetchOrders();
+      })
+      .subscribe();
 
-    return () => clearInterval(interval);
+    return () => {
+      supabase.removeChannel(channel);
+    };
   }, []);
 
   const advanceStatus = async (order: Order) => {
@@ -32,7 +45,7 @@ export default function AdminPage() {
     if (currentIndex < STATUS_FLOW.length - 1) {
       const nextStatus = STATUS_FLOW[currentIndex + 1];
       
-      const { error } = await mockSupabase.from('orders').update({ status: nextStatus }).eq('id', order.id);
+      const { error } = await supabase.from('orders').update({ status: nextStatus }).eq('id', order.id);
       
       if (!error) {
         toast.success(`Zamówienie ${order.id} -> ${nextStatus}`);
@@ -43,10 +56,10 @@ export default function AdminPage() {
 
   const getStatusColor = (status: OrderStatus) => {
     switch (status) {
-      case 'Received': return 'bg-white/10 text-white';
-      case 'Preparing': return 'bg-yellow-500/20 text-yellow-500 border-yellow-500/50';
-      case 'On the way': return 'bg-neon-blue/20 text-neon-blue border-neon-blue/50';
-      case 'Delivered': return 'bg-neon-green/20 text-neon-green border-neon-green/50';
+      case 'Otrzymane': return 'bg-white/10 text-white';
+      case 'W przygotowaniu': return 'bg-yellow-500/20 text-yellow-500 border-yellow-500/50';
+      case 'Gotowe do odbioru': return 'bg-neon-blue/20 text-neon-blue border-neon-blue/50';
+      case 'Wydane': return 'bg-neon-green/20 text-neon-green border-neon-green/50';
     }
   };
 
@@ -85,9 +98,9 @@ export default function AdminPage() {
               >
                 <div className="flex justify-between items-start">
                   <div>
-                    <h3 className="font-bold text-lg text-white">{order.customerDetails.name}</h3>
-                    <p className="text-sm text-gray-400 font-mono">ID: {order.id}</p>
-                    <p className="text-xs text-gray-500 mt-1 line-clamp-1">{order.customerDetails.address}</p>
+                    <h3 className="font-bold text-lg text-white">{order.customer_name}</h3>
+                    <p className="text-sm text-gray-400 font-mono">ID: {order.id.slice(0, 8)}...</p>
+                    <p className="text-xs text-gray-500 mt-1 line-clamp-1">{new Date(order.created_at).toLocaleTimeString()}</p>
                   </div>
                   <div className={`text-xs px-3 py-1 rounded-full border ${getStatusColor(order.status)} font-bold`}>
                     {order.status}
@@ -105,7 +118,7 @@ export default function AdminPage() {
                   </ul>
                   <div className="mt-3 pt-3 border-t border-white/10 flex justify-between font-bold text-neon-green">
                     <span>Suma:</span>
-                    <span>{order.total.toFixed(2)} zł</span>
+                    <span>{order.total_price.toFixed(2)} zł</span>
                   </div>
                 </div>
 
