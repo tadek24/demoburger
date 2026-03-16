@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { Toaster } from 'sonner';
+import { ThemeProvider } from "@/components/ThemeProvider";
+import { Navigation } from "@/components/Navigation";
 
 export const metadata: Metadata = {
   title: "Neon Burger | Future of Taste",
@@ -13,10 +15,13 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="pl">
-      <body className="antialiased min-h-screen selection:bg-neon-green selection:text-black">
-        {children}
-        <Toaster theme="dark" position="bottom-right" />
+    <html lang="pl" suppressHydrationWarning>
+      <body className="antialiased min-h-screen selection:bg-neon-green selection:text-black pt-16">
+        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+          <Navigation />
+          {children}
+          <Toaster theme="dark" position="bottom-right" />
+        </ThemeProvider>
       </body>
     </html>
   );

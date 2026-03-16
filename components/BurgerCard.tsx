@@ -41,12 +41,12 @@ export function BurgerCard({ id, name, description, price, image, ingredients }:
       <div className="relative h-48 sm:h-64 w-full bg-neutral-900 overflow-hidden flex items-center justify-center p-6">
         <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent z-10" />
         {/* Placeholder image representation since we don't have real assets */}
-        <motion.div 
+          <motion.div 
           whileHover={{ scale: 1.1 }}
           transition={{ duration: 0.3 }}
           className="relative z-0 w-full h-full flex items-center justify-center text-6xl text-center font-bold text-gray-800"
         >
-          🍔
+          {image.startsWith('/') ? '🍔' : image}
         </motion.div>
       </div>
 

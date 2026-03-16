@@ -7,38 +7,30 @@ import { useCartStore } from '@/store/cart';
 import { ShoppingBag } from 'lucide-react';
 import { motion } from 'framer-motion';
 
-const MENU_ITEMS = [
+const BESTSELLERS = [
   {
-    id: "b1",
-    name: "Cyber Classic",
-    description: "Soczysta wołowina, podwójny ser cheddar, pikle, nasz autorski sos neon.",
+    id: "smash-burger",
+    name: "Smash Burger",
+    description: "Wołowina 200g, bułka brioche, sos burger, ser x2, piklowana czerwona cebula, ogórek konserwowy.",
+    price: 34.00,
+    image: "🍔",
+    ingredients: ["Wołowina", "Bułka brioche", "Ser x2", "Sos burger"]
+  },
+  {
+    id: "zboj-burger",
+    name: "Zboczuji burger",
+    description: "Wołowina 200g, bułka brioche, sałata, sos jalapeño, ser BBQ, cebula karmelizowana, podwójny bekon, pomidor, ogórek konserwowy.",
     price: 38.00,
-    image: "/burger1.png",
-    ingredients: ["Wołowina", "Cheddar", "Pikle", "Sos Neon"]
+    image: "🍔",
+    ingredients: ["Wołowina", "Sos jalapeño", "Ser BBQ", "Podwójny bekon"]
   },
   {
-    id: "b2",
-    name: "Neon Spicy",
-    description: "Pikantny kurczak w panierce panko, jalapeno, sos sriracha mayo.",
-    price: 42.00,
-    image: "/burger2.png",
-    ingredients: ["Kurczak", "Jalapeno", "Sriracha", "Pomidor"]
-  },
-  {
-    id: "b3",
-    name: "Truffle Matrix",
-    description: "Wołowina angus, pasta truflowa, rucola, karmelizowana cebula.",
-    price: 49.00,
-    image: "/burger3.png",
-    ingredients: ["Wołowina Angus", "Trufle", "Rucola", "Cebula"]
-  },
-  {
-    id: "b4",
-    name: "Mushroom Glitch",
-    description: "Wegański kotlet z pieczarek portobello, wegański ser, świeże warzywa.",
-    price: 36.00,
-    image: "/burger4.png",
-    ingredients: ["Portobello", "Opcja Wegan", "Sałata", "Pomidor"]
+    id: "pizza-margherita",
+    name: "Margherita 40cm",
+    description: "Sos pomidorowy, ser, oregano.",
+    price: 38.00,
+    image: "🍕",
+    ingredients: ["Sos pomidorowy", "Ser", "Oregano"]
   }
 ];
 
@@ -50,17 +42,17 @@ export default function Home() {
     <main className="min-h-screen relative pb-24">
       <Hero />
       
-      <section id="menu-section" className="max-w-7xl mx-auto px-4 py-20">
+      <section id="bestsellers" className="max-w-7xl mx-auto px-4 py-20">
         <div className="flex items-end justify-between mb-12">
           <div>
-            <h2 className="text-4xl md:text-5xl font-black mb-2 tracking-tight">MENU</h2>
+            <h2 className="text-4xl md:text-5xl font-black mb-2 tracking-tight">NASZE POLECAJKI <span className="text-neon-green">/</span> BESTSELLERY</h2>
             <div className="h-1 w-20 bg-neon-green"></div>
           </div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {MENU_ITEMS.map((burger) => (
-            <BurgerCard key={burger.id} {...burger} />
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {BESTSELLERS.map((item) => (
+             <BurgerCard key={item.id} {...item} />
           ))}
         </div>
       </section>
